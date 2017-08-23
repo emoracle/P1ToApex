@@ -12,3 +12,13 @@ Daarna wordt er een nodejs script opgestart om het bestand uit te parsen en de w
 In apex.oracle.com staat de applicatie geinstalleerd die op zijn beurt de tabellen, die door de webservice gevuld wordt, te onsluiten als grafieken ed.
 
 f40652.sql   - De export van de APEX applicatie. De workspace waarop de applicatie gemaakt is, is WI.
+
+Restful webservice
+Op de ORDS van de APEX applicatie is er een service aangemaakt met een POST resource handler:
+- source type : PL/SQL
+- MIME type : application/json
+- source : 
+
+begin
+  hqvm_sm.handle_readings(:body);
+end;  
