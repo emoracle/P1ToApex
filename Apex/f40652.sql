@@ -27,7 +27,7 @@ prompt APPLICATION 40652 - SlimmeMeter
 -- Application Export:
 --   Application:     40652
 --   Name:            SlimmeMeter
---   Date and Time:   11:18 Wednesday August 30, 2017
+--   Date and Time:   18:16 Wednesday August 30, 2017
 --   Exported By:     VANMEERENDONK@GMAIL.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -113,7 +113,7 @@ wwv_flow_api.create_flow(
 ,p_csv_encoding=>'Y'
 ,p_auto_time_zone=>'N'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170830111733'
+,p_last_upd_yyyymmddhh24miss=>'20170830181049'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -10268,7 +10268,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170829184011'
+,p_last_upd_yyyymmddhh24miss=>'20170830181049'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(7431438273271387806)
@@ -10525,7 +10525,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_items_value_column_name=>'ET1'
 ,p_items_label_column_name=>'DATUMTIJD'
 ,p_items_short_desc_column_name=>'TIP'
-,p_color=>'#0000FF'
+,p_color=>'#FFCC00'
 ,p_line_style=>'solid'
 ,p_line_type=>'auto'
 ,p_marker_rendered=>'auto'
