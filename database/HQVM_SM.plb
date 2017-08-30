@@ -202,7 +202,7 @@ is
   l_json clob;
 begin
   /* Poor mans security :-) */
-  if owa_util.get_cgi_env('X-FORWARDED-FOR') = '83.82.31.224'
+  if owa_util.get_cgi_env('X-FORWARDED-FOR') = '.......'  vul een ip-adres 
   then
     --insert into requests values (p_json); commit;
     l_json := clobfromblob(p_json);
