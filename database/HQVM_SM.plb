@@ -8,6 +8,7 @@ is
   select version
   ,      elektijd
   ,      e1, e2, et1, et2, actueelvermogen, actueelterugleververmogen, gastijd, gas
+  ,      sun, sundate
   from  json_table(cp_clob,'$'
   columns (
       version  varchar2(30) path '$.version'
@@ -20,10 +21,12 @@ is
     , actueelTerugleverVermogen varchar2(30) path '$.actueelTerugleverVermogen'
     , gastijd  varchar2(33) path '$.gastijd'
     , gas      varchar2(30) path '$.gas'
+    , sun      varchar2(30) path '$.sun'  
+    , sundate  varchar2(30) path '$.sunDate'   
   ))
 ;
 
-gr_json gc_json%rowtype;
+gr_json    gc_json%rowtype;
 
 procedure corrigeer
 is
@@ -80,6 +83,7 @@ is
     ,      min(stand) as min_stand
     ,      max(stand)-min(stand) as verbruik
     from   readings
+    where  telwerk != 'SUN'
     group  by telwerk
     ,      trunc(datumtijd)
   ;
@@ -170,29 +174,37 @@ procedure set_readings
 is
   r_new readings%rowtype;
 begin
-  r_new.datumtijd := naarDatum(replace(gr_json.elektijd,'\u0000',null));
-  r_new.telwerk   := 'E1';
-  r_new.stand     := replace(gr_json.e1,'\u0000',null);
-  ins(r_new);
-  r_new.telwerk   := 'E2';
-  r_new.stand     := replace(gr_json.e2,'\u0000',null);
-  ins(r_new);
-  r_new.telwerk   := 'ET1';
-  r_new.stand     := replace(gr_json.et1,'\u0000',null);
-  ins(r_new);
-  r_new.telwerk   := 'ET2';
-  r_new.stand     := replace(gr_json.et2,'\u0000',null);
-  ins(r_new);
-  r_new.telwerk   := 'ACV';
-  r_new.stand     := replace(gr_json.actueelVermogen,'\u0000',null);
-  --ins(r_new);
-  r_new.telwerk   := 'ACTLV';
-  r_new.stand     := replace(gr_json.actueelTerugleverVermogen,'\u0000',null);
-  --ins(r_new);
-  r_new.datumtijd := naarDatum(replace(gr_json.gastijd,'\u0000',null));
-  r_new.telwerk   := 'GAS';
-  r_new.stand     := replace(gr_json.gas,'\u0000',null);
-  ins(r_new);
+  if gr_json.sun is not null 
+  then
+    r_new.datumtijd := to_date(replace(gr_json.sundate,'\u0000',null),'mm/dd/yyyy hh24:mi:ss');
+    r_new.telwerk   := 'SUN';    
+    r_new.stand     := replace(replace(gr_json.sun,'\u0000',null),'-',0);  
+    ins(r_new);
+  else
+    r_new.datumtijd := naarDatum(replace(gr_json.elektijd,'\u0000',null));
+    r_new.telwerk   := 'E1';
+    r_new.stand     := replace(gr_json.e1,'\u0000',null);
+    ins(r_new);
+    r_new.telwerk   := 'E2';
+    r_new.stand     := replace(gr_json.e2,'\u0000',null);
+    ins(r_new);
+    r_new.telwerk   := 'ET1';
+    r_new.stand     := replace(gr_json.et1,'\u0000',null);
+    ins(r_new);
+    r_new.telwerk   := 'ET2';
+    r_new.stand     := replace(gr_json.et2,'\u0000',null);
+    ins(r_new);
+    r_new.telwerk   := 'ACV';
+    r_new.stand     := replace(gr_json.actueelVermogen,'\u0000',null);
+    --ins(r_new);
+    r_new.telwerk   := 'ACTLV';
+    r_new.stand     := replace(gr_json.actueelTerugleverVermogen,'\u0000',null);
+    --ins(r_new);
+    r_new.datumtijd := naarDatum(replace(gr_json.gastijd,'\u0000',null));
+    r_new.telwerk   := 'GAS';
+    r_new.stand     := replace(gr_json.gas,'\u0000',null);
+    ins(r_new);
+  end if;
 end;
 
 procedure handle_readings
@@ -202,7 +214,7 @@ is
   l_json clob;
 begin
   /* Poor mans security :-) */
-  if owa_util.get_cgi_env('X-FORWARDED-FOR') = '.......'  vul een ip-adres 
+  if owa_util.get_cgi_env('X-FORWARDED-FOR') = '83.82.31.224'
   then
     --insert into requests values (p_json); commit;
     l_json := clobfromblob(p_json);
@@ -222,7 +234,7 @@ begin
 exception
   when others
   then    
-    htp.p(sqlerrm);
+    htp.p(sqlerrm||' '||dbms_utility.format_error_backtrace);
 end;
 
 end;
