@@ -27,7 +27,7 @@ prompt APPLICATION 40652 - SlimmeMeter
 -- Application Export:
 --   Application:     40652
 --   Name:            SlimmeMeter
---   Date and Time:   18:16 Wednesday August 30, 2017
+--   Date and Time:   10:24 Saturday September 9, 2017
 --   Exported By:     VANMEERENDONK@GMAIL.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -39,7 +39,7 @@ prompt APPLICATION 40652 - SlimmeMeter
 --   Pages:                      5
 --     Items:                    2
 --     Processes:                8
---     Regions:                 15
+--     Regions:                 16
 --     Buttons:                  3
 --     Dynamic Actions:          2
 --   Shared Components:
@@ -65,7 +65,7 @@ prompt APPLICATION 40652 - SlimmeMeter
 --         Report:               9
 --     Globalization:
 --     Reports:
---   Supporting Objects:  Included
+--   Supporting Objects:  Excluded
 
 prompt --application/delete_application
 begin
@@ -113,7 +113,7 @@ wwv_flow_api.create_flow(
 ,p_csv_encoding=>'Y'
 ,p_auto_time_zone=>'N'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170830181049'
+,p_last_upd_yyyymmddhh24miss=>'20170909102225'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -137,15 +137,6 @@ wwv_flow_api.create_list_item(
 ,p_list_item_current_for_pages=>'1'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(3027675338043905543)
-,p_list_item_display_sequence=>20
-,p_list_item_link_text=>'Overzicht standen'
-,p_list_item_link_target=>'f?p=&APP_ID.:2:&SESSION.::&DEBUG.::::'
-,p_list_item_icon=>'fa-layout-list-left'
-,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
-,p_list_item_current_for_pages=>'2'
-);
-wwv_flow_api.create_list_item(
  p_id=>wwv_flow_api.id(3367045821324494206)
 ,p_list_item_display_sequence=>30
 ,p_list_item_link_text=>'Daggrafieken'
@@ -162,6 +153,15 @@ wwv_flow_api.create_list_item(
 ,p_list_item_icon=>'fa-combo-chart'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'4'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3027675338043905543)
+,p_list_item_display_sequence=>50
+,p_list_item_link_text=>'Overzicht standen'
+,p_list_item_link_target=>'f?p=&APP_ID.:2:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-layout-list-left'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'2'
 );
 wwv_flow_api.create_list(
  p_id=>wwv_flow_api.id(2988284614167442428)
@@ -6044,9 +6044,6 @@ wwv_flow_api.create_template_option(
 ,p_help_text=>'Sets region body height to 240px.'
 ,p_is_advanced=>'N'
 );
-end;
-/
-begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988251525803442390)
 ,p_theme_id=>42
@@ -6071,6 +6068,9 @@ wwv_flow_api.create_template_option(
 ,p_group_id=>wwv_flow_api.id(2988243148070442381)
 ,p_template_types=>'REGION'
 );
+end;
+/
+begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988251762410442390)
 ,p_theme_id=>42
@@ -7002,9 +7002,6 @@ wwv_flow_api.create_template_option(
 ,p_template_types=>'REPORT'
 ,p_is_advanced=>'N'
 );
-end;
-/
-begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988262566018442400)
 ,p_theme_id=>42
@@ -7061,6 +7058,9 @@ wwv_flow_api.create_template_option(
 ,p_group_id=>wwv_flow_api.id(2988256969138442395)
 ,p_template_types=>'REPORT'
 );
+end;
+/
+begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988263210809442401)
 ,p_theme_id=>42
@@ -7950,9 +7950,6 @@ wwv_flow_api.create_template_option(
 ,p_template_types=>'LIST'
 ,p_is_advanced=>'N'
 );
-end;
-/
-begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988273093159442411)
 ,p_theme_id=>42
@@ -8045,6 +8042,9 @@ wwv_flow_api.create_template_option(
 ,p_template_types=>'FIELD'
 ,p_help_text=>'Adds a medium bottom margin for this field.'
 );
+end;
+/
+begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988275897857442420)
 ,p_theme_id=>42
@@ -8843,13 +8843,13 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170829183621'
+,p_last_upd_yyyymmddhh24miss=>'20170909102225'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41467315818488260806)
 ,p_plug_name=>'Verbruiken (kWh)'
 ,p_region_name=>'ERegion'
-,p_region_template_options=>'#DEFAULT#:t-Region--removeHeader:t-Region--scrollBody:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:t-Region--removeHeader:t-Region--noUI:t-Region--scrollBody:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988251126523442389)
 ,p_plug_display_sequence=>10
@@ -9047,9 +9047,104 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_tick_label_rendered=>'on'
 );
 wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(7431440916865387833)
+,p_plug_name=>'Zonnesterkte'
+,p_parent_plug_id=>wwv_flow_api.id(41467315818488260806)
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:t-Region--removeHeader:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:t-Form--large:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_api.id(2988251126523442389)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(7431441050440387834)
+,p_region_id=>wwv_flow_api.id(7431440916865387833)
+,p_chart_type=>'lineWithArea'
+,p_height=>'180'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'none'
+,p_orientation=>'vertical'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
+,p_hide_and_show_behavior=>'none'
+,p_hover_behavior=>'none'
+,p_stack=>'off'
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_show_label=>true
+,p_legend_rendered=>'on'
+,p_legend_position=>'top'
+,p_automatic_refresh_interval=>900
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(7431441168340387835)
+,p_chart_id=>wwv_flow_api.id(7431441050440387834)
+,p_seq=>10
+,p_name=>'Zonnesterkte W/m2'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select datumtijd',
+',      stand as zonnesterkte',
+',      initcap(to_char(datumtijd,''DAY dd-mm-yyyy hh24:mi'',''nls_date_language=dutch''))',
+'||''<br>sterkte: ''||stand as tip',
+'from (',
+'select t.datumtijd',
+',      t.stand ',
+'from   readings t ',
+'where  t.telwerk = ''SUN'' ',
+')',
+'order by datumtijd ',
+'',
+''))
+,p_items_value_column_name=>'ZONNESTERKTE'
+,p_items_label_column_name=>'DATUMTIJD'
+,p_items_short_desc_column_name=>'TIP'
+,p_color=>'#FF9500'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(7431441204210387836)
+,p_chart_id=>wwv_flow_api.id(7431441050440387834)
+,p_axis=>'x'
+,p_is_rendered=>'off'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(7431441383393387837)
+,p_chart_id=>wwv_flow_api.id(7431441050440387834)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'on'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41467316507027260813)
 ,p_plug_name=>'Gas (m3)'
-,p_region_template_options=>'#DEFAULT#:t-Region--removeHeader:t-Region--scrollBody:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:t-Region--removeHeader:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988251126523442389)
 ,p_plug_display_sequence=>30
@@ -9064,11 +9159,13 @@ wwv_flow_api.create_jet_chart(
  p_id=>wwv_flow_api.id(41467316626927260814)
 ,p_region_id=>wwv_flow_api.id(41467316507027260813)
 ,p_chart_type=>'bar'
+,p_height=>'250'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
 ,p_orientation=>'vertical'
 ,p_data_cursor=>'auto'
 ,p_data_cursor_behavior=>'auto'
+,p_hide_and_show_behavior=>'withRescale'
 ,p_hover_behavior=>'none'
 ,p_stack=>'off'
 ,p_zoom_and_scroll=>'off'
@@ -9077,7 +9174,8 @@ wwv_flow_api.create_jet_chart(
 ,p_show_group_name=>true
 ,p_show_value=>true
 ,p_show_label=>true
-,p_legend_rendered=>'off'
+,p_legend_rendered=>'on'
+,p_legend_position=>'top'
 ,p_automatic_refresh_interval=>900
 );
 wwv_flow_api.create_jet_chart_series(
@@ -9133,7 +9231,7 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_baseline_scaling=>'zero'
 ,p_position=>'auto'
 ,p_major_tick_rendered=>'on'
-,p_minor_tick_rendered=>'off'
+,p_minor_tick_rendered=>'on'
 ,p_tick_label_rendered=>'on'
 );
 wwv_flow_api.create_report_region(
@@ -9688,6 +9786,16 @@ wwv_flow_api.create_ig_report_filter(
 ,p_is_enabled=>false
 );
 wwv_flow_api.create_ig_report_filter(
+ p_id=>wwv_flow_api.id(116350000006)
+,p_report_id=>wwv_flow_api.id(3027686679618905546)
+,p_type=>'COLUMN'
+,p_column_id=>wwv_flow_api.id(3027688661447905551)
+,p_operator=>'EQ'
+,p_is_case_sensitive=>true
+,p_expression=>'SUN'
+,p_is_enabled=>true
+);
+wwv_flow_api.create_ig_report_filter(
  p_id=>wwv_flow_api.id(3198026001236)
 ,p_report_id=>wwv_flow_api.id(3027686679618905546)
 ,p_type=>'COLUMN'
@@ -9705,7 +9813,7 @@ wwv_flow_api.create_ig_report_filter(
 ,p_operator=>'EQ'
 ,p_is_case_sensitive=>true
 ,p_expression=>'E1'
-,p_is_enabled=>true
+,p_is_enabled=>false
 );
 wwv_flow_api.create_ig_report_filter(
  p_id=>wwv_flow_api.id(35994523042545)
@@ -9759,12 +9867,12 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170829183751'
+,p_last_upd_yyyymmddhh24miss=>'20170909101940'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(7431439324644387817)
 ,p_plug_name=>'Netto (kWh) &nbsp;&nbsp;'
-,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noBorder:t-Region--hiddenOverflow:margin-top-none'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:margin-top-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988245868046442383)
 ,p_plug_display_sequence=>20
@@ -9779,6 +9887,7 @@ wwv_flow_api.create_jet_chart(
  p_id=>wwv_flow_api.id(7431439538561387819)
 ,p_region_id=>wwv_flow_api.id(7431439324644387817)
 ,p_chart_type=>'combo'
+,p_height=>'250'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
 ,p_orientation=>'vertical'
@@ -9837,7 +9946,7 @@ wwv_flow_api.create_jet_chart_axis(
  p_id=>wwv_flow_api.id(7431439831339387822)
 ,p_chart_id=>wwv_flow_api.id(7431439538561387819)
 ,p_axis=>'x'
-,p_is_rendered=>'on'
+,p_is_rendered=>'off'
 ,p_format_type=>'date-short'
 ,p_numeric_pattern=>'dd-mm-yyyy'
 ,p_format_scaling=>'none'
@@ -9854,6 +9963,7 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_chart_id=>wwv_flow_api.id(7431439538561387819)
 ,p_axis=>'y'
 ,p_is_rendered=>'on'
+,p_max=>30
 ,p_format_scaling=>'auto'
 ,p_scaling=>'linear'
 ,p_baseline_scaling=>'zero'
@@ -9865,7 +9975,7 @@ wwv_flow_api.create_jet_chart_axis(
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(44834361248615755010)
 ,p_plug_name=>'Netto Verbruiken (kWh) &nbsp;&nbsp;'
-,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noBorder:t-Region--hiddenOverflow:margin-top-none'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988245868046442383)
 ,p_plug_display_sequence=>10
@@ -9882,6 +9992,7 @@ wwv_flow_api.create_jet_chart(
  p_id=>wwv_flow_api.id(3367056519059494209)
 ,p_region_id=>wwv_flow_api.id(44834361248615755010)
 ,p_chart_type=>'combo'
+,p_height=>'250'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
 ,p_orientation=>'vertical'
@@ -10073,7 +10184,7 @@ wwv_flow_api.create_jet_chart_axis(
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(44834361937154755017)
 ,p_plug_name=>'Gas (m<sup>3</sup>)'
-,p_region_template_options=>'#DEFAULT#:is-expanded:t-Region--scrollBody'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988245868046442383)
 ,p_plug_display_sequence=>30
@@ -10089,6 +10200,7 @@ wwv_flow_api.create_jet_chart(
  p_id=>wwv_flow_api.id(3367062990835494218)
 ,p_region_id=>wwv_flow_api.id(44834361937154755017)
 ,p_chart_type=>'combo'
+,p_height=>'250'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
 ,p_orientation=>'vertical'
@@ -10167,13 +10279,15 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_chart_id=>wwv_flow_api.id(3367062990835494218)
 ,p_axis=>'x'
 ,p_is_rendered=>'on'
-,p_format_scaling=>'auto'
+,p_format_type=>'date-short'
+,p_numeric_pattern=>'dd-mm-yyyy'
+,p_format_scaling=>'none'
 ,p_scaling=>'linear'
 ,p_baseline_scaling=>'min'
 ,p_major_tick_rendered=>'on'
 ,p_minor_tick_rendered=>'off'
 ,p_tick_label_rendered=>'on'
-,p_tick_label_rotation=>'auto'
+,p_tick_label_rotation=>'none'
 ,p_tick_label_position=>'inside'
 );
 wwv_flow_api.create_jet_chart_axis(
@@ -10181,6 +10295,7 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_chart_id=>wwv_flow_api.id(3367062990835494218)
 ,p_axis=>'y'
 ,p_is_rendered=>'on'
+,p_max=>18
 ,p_format_scaling=>'auto'
 ,p_scaling=>'linear'
 ,p_baseline_scaling=>'zero'
@@ -10268,7 +10383,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170830181049'
+,p_last_upd_yyyymmddhh24miss=>'20170909101311'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(7431438273271387806)
@@ -10287,7 +10402,7 @@ wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(7431440030408387824)
 ,p_plug_name=>'Netto (kWh) &nbsp;&nbsp;'
 ,p_parent_plug_id=>wwv_flow_api.id(7431438273271387806)
-,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noBorder:t-Region--hiddenOverflow:margin-top-none'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988245868046442383)
 ,p_plug_display_sequence=>30
@@ -10302,6 +10417,7 @@ wwv_flow_api.create_jet_chart(
  p_id=>wwv_flow_api.id(7431440284771387826)
 ,p_region_id=>wwv_flow_api.id(7431440030408387824)
 ,p_chart_type=>'combo'
+,p_height=>'250'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
 ,p_orientation=>'vertical'
@@ -10389,7 +10505,7 @@ wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(52265405856770065562)
 ,p_plug_name=>'Verbruiken (kWh) &nbsp;&nbsp;'
 ,p_parent_plug_id=>wwv_flow_api.id(7431438273271387806)
-,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noBorder:t-Region--hiddenOverflow:margin-top-none'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988245868046442383)
 ,p_plug_display_sequence=>20
@@ -10406,6 +10522,7 @@ wwv_flow_api.create_jet_chart(
  p_id=>wwv_flow_api.id(7431045703275310554)
 ,p_region_id=>wwv_flow_api.id(52265405856770065562)
 ,p_chart_type=>'combo'
+,p_height=>'250'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
 ,p_orientation=>'vertical'
@@ -10572,6 +10689,7 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_chart_id=>wwv_flow_api.id(7431045703275310554)
 ,p_axis=>'y'
 ,p_is_rendered=>'on'
+,p_max=>450
 ,p_format_scaling=>'auto'
 ,p_scaling=>'linear'
 ,p_baseline_scaling=>'zero'
@@ -10598,9 +10716,9 @@ wwv_flow_api.create_jet_chart_axis(
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(52265406545309065569)
-,p_plug_name=>'Gas (m<sup>3</sup>)'
+,p_plug_name=>'Gas '
 ,p_parent_plug_id=>wwv_flow_api.id(7431438273271387806)
-,p_region_template_options=>'#DEFAULT#:is-expanded:t-Region--scrollBody'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988245868046442383)
 ,p_plug_display_sequence=>40
@@ -10616,6 +10734,7 @@ wwv_flow_api.create_jet_chart(
  p_id=>wwv_flow_api.id(7431049355157310559)
 ,p_region_id=>wwv_flow_api.id(52265406545309065569)
 ,p_chart_type=>'combo'
+,p_height=>'250'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
 ,p_orientation=>'vertical'
@@ -10714,13 +10833,13 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_baseline_scaling=>'zero'
 ,p_position=>'auto'
 ,p_major_tick_rendered=>'on'
-,p_minor_tick_rendered=>'off'
+,p_minor_tick_rendered=>'on'
 ,p_tick_label_rendered=>'on'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41467319652387260844)
 ,p_plug_name=>'Maandverbruiken'
-,p_region_template_options=>'#DEFAULT#:t-Form--large:t-Form--stretchInputs'
+,p_region_template_options=>'#DEFAULT#:t-IRR-region--noBorders:t-Form--noPadding:t-Form--large:t-Form--stretchInputs:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_api.id(2988250618901442389)
 ,p_plug_display_sequence=>10
@@ -11190,26 +11309,6 @@ wwv_flow_api.create_page_process(
 ,p_process_name=>'Get Username Cookie'
 ,p_process_sql_clob=>':P101_USERNAME := apex_authentication.get_login_username_cookie;'
 );
-end;
-/
-prompt --application/deployment/definition
-begin
-null;
-end;
-/
-prompt --application/deployment/install
-begin
-null;
-end;
-/
-prompt --application/deployment/checks
-begin
-null;
-end;
-/
-prompt --application/deployment/buildoptions
-begin
-null;
 end;
 /
 prompt --application/end_environment
