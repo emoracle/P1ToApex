@@ -1,3 +1,4 @@
+prompt --application/set_environment
 set define off verify off feedback off
 whenever sqlerror exit sql.sqlcode rollback
 --------------------------------------------------------------------------------
@@ -13,38 +14,38 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_api.import_begin (
  p_version_yyyy_mm_dd=>'2016.08.24'
-,p_release=>'5.1.2.00.09'
+,p_release=>'5.1.4.00.08'
 ,p_default_workspace_id=>221258826983185015
 ,p_default_application_id=>40652
 ,p_default_owner=>'WI'
 );
 end;
 /
-prompt --application/set_environment
  
 prompt APPLICATION 40652 - SlimmeMeter
 --
 -- Application Export:
 --   Application:     40652
 --   Name:            SlimmeMeter
---   Date and Time:   10:24 Saturday September 9, 2017
+--   Date and Time:   15:35 Wednesday February 21, 2018
 --   Exported By:     VANMEERENDONK@GMAIL.COM
 --   Flashback:       0
 --   Export Type:     Application Export
---   Version:         5.1.2.00.09
+--   Version:         5.1.4.00.08
 --   Instance ID:     63113759365424
 --
 
 -- Application Statistics:
---   Pages:                      5
---     Items:                    2
---     Processes:                8
---     Regions:                 16
---     Buttons:                  3
---     Dynamic Actions:          2
+--   Pages:                      7
+--     Items:                   21
+--     Processes:                9
+--     Regions:                 22
+--     Buttons:                  5
+--     Dynamic Actions:          3
 --   Shared Components:
 --     Logic:
 --       Items:                  1
+--       Web Services:           1
 --     Navigation:
 --       Lists:                  2
 --       Breadcrumbs:            1
@@ -65,7 +66,7 @@ prompt APPLICATION 40652 - SlimmeMeter
 --         Report:               9
 --     Globalization:
 --     Reports:
---   Supporting Objects:  Excluded
+--   Supporting Objects:  Included
 
 prompt --application/delete_application
 begin
@@ -84,7 +85,7 @@ wwv_flow_api.create_flow(
 ,p_display_id=>nvl(wwv_flow_application_install.get_application_id,40652)
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'WI')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,'SlimmeMeter')
-,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'F_40652')
+,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'MIJNSLIMMEMETER')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'92A5E026B3EADF3F5C66A021B03853AD66117AD18C0440041DF3DBA56CD5E70F'
@@ -113,7 +114,7 @@ wwv_flow_api.create_flow(
 ,p_csv_encoding=>'Y'
 ,p_auto_time_zone=>'N'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170909102225'
+,p_last_upd_yyyymmddhh24miss=>'20180215205810'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -162,6 +163,23 @@ wwv_flow_api.create_list_item(
 ,p_list_item_icon=>'fa-layout-list-left'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'2'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(43998272592374103170)
+,p_list_item_display_sequence=>60
+,p_list_item_link_text=>'APX Prijzen'
+,p_list_item_link_target=>'f?p=&APP_ID.:8:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa fa-money'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(50090189529376132518)
+,p_list_item_display_sequence=>70
+,p_list_item_link_text=>'Euro''s'
+,p_list_item_link_target=>'f?p=&APP_ID.:5:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-arrow-right'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'5'
 );
 wwv_flow_api.create_list(
  p_id=>wwv_flow_api.id(2988284614167442428)
@@ -6044,6 +6062,9 @@ wwv_flow_api.create_template_option(
 ,p_help_text=>'Sets region body height to 240px.'
 ,p_is_advanced=>'N'
 );
+end;
+/
+begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988251525803442390)
 ,p_theme_id=>42
@@ -6068,9 +6089,6 @@ wwv_flow_api.create_template_option(
 ,p_group_id=>wwv_flow_api.id(2988243148070442381)
 ,p_template_types=>'REGION'
 );
-end;
-/
-begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988251762410442390)
 ,p_theme_id=>42
@@ -7002,6 +7020,9 @@ wwv_flow_api.create_template_option(
 ,p_template_types=>'REPORT'
 ,p_is_advanced=>'N'
 );
+end;
+/
+begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988262566018442400)
 ,p_theme_id=>42
@@ -7058,9 +7079,6 @@ wwv_flow_api.create_template_option(
 ,p_group_id=>wwv_flow_api.id(2988256969138442395)
 ,p_template_types=>'REPORT'
 );
-end;
-/
-begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988263210809442401)
 ,p_theme_id=>42
@@ -7950,6 +7968,9 @@ wwv_flow_api.create_template_option(
 ,p_template_types=>'LIST'
 ,p_is_advanced=>'N'
 );
+end;
+/
+begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988273093159442411)
 ,p_theme_id=>42
@@ -8042,9 +8063,6 @@ wwv_flow_api.create_template_option(
 ,p_template_types=>'FIELD'
 ,p_help_text=>'Adds a medium bottom margin for this field.'
 );
-end;
-/
-begin
 wwv_flow_api.create_template_option(
  p_id=>wwv_flow_api.id(2988275897857442420)
 ,p_theme_id=>42
@@ -8793,11 +8811,6 @@ wwv_flow_api.create_authentication(
 );
 end;
 /
-prompt --application/ui_types
-begin
-null;
-end;
-/
 prompt --application/user_interfaces
 begin
 wwv_flow_api.create_user_interface(
@@ -8838,12 +8851,24 @@ wwv_flow_api.create_page(
 ,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
 ,p_first_item=>'NO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'OFF'
+,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'.teLaat {',
+'  color: red;',
+'  font-weight: bold;',
+'}',
+'.teLaat:after {',
+'    content: "- Er is een storing, de data wordt niet bijgewerkt"',
+'}',
+'.opTijd {',
+'  color: white;',
+'  font-weight: normal;    ',
+'}'))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_overwrite_navigation_list=>'N'
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170909102225'
+,p_last_upd_yyyymmddhh24miss=>'20170927183908'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41467315818488260806)
@@ -9240,15 +9265,15 @@ wwv_flow_api.create_report_region(
 ,p_template=>wwv_flow_api.id(2988241119766442379)
 ,p_display_sequence=>20
 ,p_include_in_reg_disp_sel_yn=>'N'
-,p_region_template_options=>'#DEFAULT#:t-Form--slimPadding:margin-right-none'
-,p_component_template_options=>'#DEFAULT#:t-Report--staticRowColors:t-Report--rowHighlightOff:t-Report--noBorders'
+,p_region_template_options=>'t-Form--noPadding:t-Form--large:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
+,p_component_template_options=>'t-Report--staticRowColors:t-Report--rowHighlightOff:t-Report--noBorders'
 ,p_new_grid_row=>false
 ,p_grid_column_span=>4
 ,p_display_point=>'BODY'
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select dag',
-',      round(nvl(Tlaag,0),2) as Tlaag',
-',      round(nvl(TNormaal,0),2) as TNormaal',
+',      round(nvl(Tlaag,0)) as Tlaag',
+',      round(nvl(TNormaal,0)) as TNormaal',
 ',      round(laag) as laag',
 ',      round(normaal) as normaal',
 ',      round(nvl(laag,0)+nvl(normaal,0)-nvl(Tlaag,0)-nvl(Tnormaal,0)) as elek',
@@ -9258,7 +9283,7 @@ wwv_flow_api.create_report_region(
 '  ,       telwerk',
 '  ,       round(verbruik) as verbruik',
 '  from   day_readings ',
-'  where   verbruik <> 0',
+'  where  datumtijd >= to_date(''01-08-2017'',''dd-mm-yyyy'')',
 ')',
 'pivot ( avg(verbruik)',
 '     for (telwerk) in (''E1'' as Laag,''E2'' as Normaal,''GAS'' as Gas, ''ET1'' as Tlaag, ''ET2'' as TNormaal)',
@@ -9362,6 +9387,7 @@ wwv_flow_api.create_report_region(
 ,p_include_in_reg_disp_sel_yn=>'N'
 ,p_region_template_options=>'#DEFAULT#:margin-top-sm:margin-right-none'
 ,p_component_template_options=>'#DEFAULT#:t-Report--staticRowColors:t-Report--rowHighlightOff:t-Report--noBorders'
+,p_grid_column_span=>11
 ,p_display_point=>'BODY'
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'with bron as',
@@ -9376,7 +9402,7 @@ wwv_flow_api.create_report_region(
 'select  telwerk',
 ',       round(verbruik) as verbruik',
 'from   day_readings ',
-'where  verbruik <> 0',
+'where  datumtijd >= to_date(''01-08-2017'',''dd-mm-yyyy'')',
 ')',
 'pivot ( avg(verbruik)',
 '     for (telwerk) in (''E1'' as Laag,''E2'' as Normaal,''GAS'' as Gas,''ET1'' as Tlaag, ''ET2'' as TNormaal)',
@@ -9485,12 +9511,18 @@ wwv_flow_api.create_page_process(
 ,p_process_sequence=>10
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'New'
+,p_process_name=>'werkTotdatumBij'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'begin',
-'select to_char(max(datumtijd),''dd-mm-yyyy hh24:mi'')',
+'select case ',
+'       when sysdate - datum < 1/48 then ''<span class="opTijd">''',
+'       else ''<span class="teLaat">''',
+'       end||to_char(datum,''dd-mm-yyyy hh24:mi'')||''</span>''',
 'into :g_tot',
-'from readings;',
+'from (',
+'  select max(datumtijd) as datum',
+'  from readings',
+');    ',
 'end;'))
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
@@ -9867,7 +9899,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170909101940'
+,p_last_upd_yyyymmddhh24miss=>'20180103195521'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(7431439324644387817)
@@ -9927,6 +9959,7 @@ wwv_flow_api.create_jet_chart_series(
 ',      sum(case when t.telwerk in (''ET2'',''ET1'') then -1 else 1 end * t.verbruik) as verbruik',
 'from   day_readings t ',
 'where  t.telwerk in (''E2'',''E1'',''ET1'',''ET2'')',
+'and datumtijd >= sysdate -90',
 'group  by t.datumtijd',
 ')',
 'order by dd_datumtijd '))
@@ -9974,7 +10007,7 @@ wwv_flow_api.create_jet_chart_axis(
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(44834361248615755010)
-,p_plug_name=>'Netto Verbruiken (kWh) &nbsp;&nbsp;'
+,p_plug_name=>'Elektra (kWh) &nbsp;&nbsp;'
 ,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:is-expanded:t-Region--noUI:t-Region--hiddenOverflow:t-Form--noPadding:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(2988245868046442383)
@@ -10023,7 +10056,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'E1 (laag)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''dd-mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm-dd'') as datumtijd',
 ',      datumtijd as dd_datumtijd',
 ',      round(verbruik) as e1',
 ',      initcap(to_char(datumtijd,''DAY dd-mm-yyyy'',''nls_date_language=dutch''))',
@@ -10035,9 +10068,9 @@ wwv_flow_api.create_jet_chart_series(
 'select t.*',
 'from   day_readings t ',
 'where t.telwerk = ''E1'' ',
+'and datumtijd >= sysdate -90',
 ') sub',
-'order by dd_datumtijd',
-''))
+'order by dd_datumtijd'))
 ,p_series_type=>'bar'
 ,p_items_value_column_name=>'E1'
 ,p_items_label_column_name=>'DATUMTIJD'
@@ -10057,7 +10090,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'E2 (Normaal)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''dd-mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm-dd'') as datumtijd',
 ',      datumtijd                       as dd_datumtijd',
 ',      round(verbruik) as e2',
 ',      initcap(to_char(datumtijd,''DAY dd-mm-yyyy'',''nls_date_language=dutch''))',
@@ -10069,6 +10102,7 @@ wwv_flow_api.create_jet_chart_series(
 'select t.*',
 'from   day_readings t ',
 'where t.telwerk = ''E2'' ',
+'and datumtijd >= sysdate -90',
 ') sub',
 'order by dd_datumtijd',
 ''))
@@ -10091,7 +10125,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'ET1 (laag)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''dd-mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm-dd'') as datumtijd',
 ',      datumtijd as dd_datumtijd',
 ',      -round(verbruik) as et1',
 ',      initcap(to_char(datumtijd,''DAY dd-mm-yyyy'',''nls_date_language=dutch''))',
@@ -10103,9 +10137,9 @@ wwv_flow_api.create_jet_chart_series(
 'select t.*',
 'from   day_readings t ',
 'where t.telwerk = ''ET1'' ',
+'and datumtijd >= sysdate -90',
 ') sub',
-'order by dd_datumtijd',
-''))
+'order by dd_datumtijd'))
 ,p_series_type=>'bar'
 ,p_items_value_column_name=>'ET1'
 ,p_items_label_column_name=>'DATUMTIJD'
@@ -10125,7 +10159,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'ET2 (Normaal)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''dd-mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm-dd'') as datumtijd',
 ',      datumtijd as dd_datumtijd',
 ',      -round(verbruik) as et2',
 ',      initcap(to_char(datumtijd,''DAY dd-mm-yyyy'',''nls_date_language=dutch''))',
@@ -10137,6 +10171,7 @@ wwv_flow_api.create_jet_chart_series(
 'select t.*',
 'from   day_readings t ',
 'where t.telwerk = ''ET2'' ',
+'and datumtijd >= sysdate -90',
 ') sub',
 'order by dd_datumtijd',
 ''))
@@ -10156,7 +10191,7 @@ wwv_flow_api.create_jet_chart_axis(
  p_id=>wwv_flow_api.id(3367057006171494211)
 ,p_chart_id=>wwv_flow_api.id(3367056519059494209)
 ,p_axis=>'x'
-,p_is_rendered=>'on'
+,p_is_rendered=>'off'
 ,p_format_type=>'date-short'
 ,p_numeric_pattern=>'dd-mm-yyyy'
 ,p_format_scaling=>'none'
@@ -10225,7 +10260,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select datumtijd as dd_datumtijd',
-',      to_char(datumtijd,''dd-mm-yyyy'') as datumtijd',
+',      to_char(datumtijd,''yyyy-mm-dd'') as datumtijd',
 ',      round(verbruik) as gas',
 ',      initcap(to_char(datumtijd,''DAY dd-mm-yyyy'',''nls_date_language=dutch''))',
 '||''<br>verbruik: ''||round(verbruik )||'' m3''',
@@ -10236,8 +10271,9 @@ wwv_flow_api.create_jet_chart_series(
 'select t.*',
 'from   day_readings t ',
 'where t.telwerk = ''GAS'' ',
+'and datumtijd >= sysdate -90',
 ')',
-'order by dd_datumtijd',
+'order by 1',
 '',
 ''))
 ,p_series_type=>'bar'
@@ -10258,10 +10294,11 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'Gem.'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select  to_char(datumtijd,''dd-mm-yyyy'') as datumtijd',
+'select  to_char(datumtijd,''yyyy-mm-dd'') as datumtijd',
 ',     datumtijd as dd_datumtijd',
 ',      avg(verbruik) over () as gem',
 'from day_readings where telwerk = ''GAS''',
+'and datumtijd >= sysdate -90',
 'order by dd_datumtijd'))
 ,p_series_type=>'line'
 ,p_items_value_column_name=>'GEM'
@@ -10278,7 +10315,7 @@ wwv_flow_api.create_jet_chart_axis(
  p_id=>wwv_flow_api.id(3367063456030494219)
 ,p_chart_id=>wwv_flow_api.id(3367062990835494218)
 ,p_axis=>'x'
-,p_is_rendered=>'on'
+,p_is_rendered=>'off'
 ,p_format_type=>'date-short'
 ,p_numeric_pattern=>'dd-mm-yyyy'
 ,p_format_scaling=>'none'
@@ -10295,7 +10332,6 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_chart_id=>wwv_flow_api.id(3367062990835494218)
 ,p_axis=>'y'
 ,p_is_rendered=>'on'
-,p_max=>18
 ,p_format_scaling=>'auto'
 ,p_scaling=>'linear'
 ,p_baseline_scaling=>'zero'
@@ -10332,7 +10368,7 @@ wwv_flow_api.create_page_da_action(
 ,p_event_id=>wwv_flow_api.id(41467317709153260825)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
+,p_execute_on_page_init=>'Y'
 ,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'begin',
@@ -10383,7 +10419,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20170909101311'
+,p_last_upd_yyyymmddhh24miss=>'20180103195030'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(7431438273271387806)
@@ -10446,7 +10482,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'Netto'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''dd-mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm'') as datumtijd',
 ',      datumtijd as dd_datumtijd',
 ',      round(verbruik) as netto',
 ',      initcap(to_char(datumtijd,''mm-yyyy'',''nls_date_language=dutch''))',
@@ -10460,11 +10496,11 @@ wwv_flow_api.create_jet_chart_series(
 'group  by t.datumtijd',
 ')',
 'order by dd_datumtijd '))
-,p_series_type=>'lineWithArea'
+,p_series_type=>'bar'
 ,p_items_value_column_name=>'NETTO'
 ,p_items_label_column_name=>'DATUMTIJD'
 ,p_items_short_desc_column_name=>'TIP'
-,p_color=>'#007AFF'
+,p_color=>'#00D9FF'
 ,p_line_style=>'solid'
 ,p_line_type=>'auto'
 ,p_marker_rendered=>'auto'
@@ -10491,7 +10527,7 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_axis=>'x'
 ,p_is_rendered=>'on'
 ,p_format_type=>'date-short'
-,p_numeric_pattern=>'dd-mm-yyyy'
+,p_numeric_pattern=>'mm-yyyy'
 ,p_format_scaling=>'none'
 ,p_scaling=>'linear'
 ,p_baseline_scaling=>'min'
@@ -10553,7 +10589,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'E1 (laag)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm'') as datumtijd',
 ',      datumtijd as dd_datumtijd',
 ',      round(verbruik - nvl((select tl.verbruik from month_readings tl where tl.telwerk = ''ET1'' and tl.datumtijd = sub.datumtijd),0)) as e1',
 ',      initcap(to_char(datumtijd,''mm-yyyy'',''nls_date_language=dutch''))',
@@ -10588,7 +10624,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'E2 (Normaal)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm'') as datumtijd',
 ',      datumtijd as dd_datumtijd',
 ',      round(verbruik) as e2',
 ',      initcap(to_char(datumtijd,''mm-yyyy'',''nls_date_language=dutch''))',
@@ -10622,7 +10658,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'ET1 (laag)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm'') as datumtijd',
 ',      datumtijd as dd_datumtijd',
 ',      -round(verbruik) as et1',
 ',      initcap(to_char(datumtijd,''mm-yyyy'',''nls_date_language=dutch''))',
@@ -10657,7 +10693,7 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'ET2 (Normaal)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select to_char(datumtijd,''mm-yyyy'') as datumtijd',
+'select to_char(datumtijd,''yyyy-mm'') as datumtijd',
 ',      datumtijd as dd_datumtijd',
 ',      -round(verbruik)as et2',
 ',      initcap(to_char(datumtijd,''mm-yyyy'',''nls_date_language=dutch''))',
@@ -10704,7 +10740,7 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_axis=>'x'
 ,p_is_rendered=>'on'
 ,p_format_type=>'date-short'
-,p_numeric_pattern=>'dd-mm-yyyy'
+,p_numeric_pattern=>'mm-yyyy'
 ,p_format_scaling=>'none'
 ,p_scaling=>'linear'
 ,p_baseline_scaling=>'min'
@@ -10758,20 +10794,20 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'gas (m3)'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select datumtijd as dd_datumtijd',
-',      to_char(datumtijd,''mm-yyyy'') as datumtijd',
-',      round(verbruik) as gas',
-',      initcap(to_char(datumtijd,''mm-yyyy'',''nls_date_language=dutch''))',
-'||''<br>verbruik: ''||round(verbruik )||'' m3''',
-'||''<br>beginstand: ''||min_stand',
-'||''<br>eindstand: ''||max_stand',
+'select to_char(sub.datumtijd,''yyyy-mm'') as datumtijd',
+',      sub.datumtijd as dd_datumtijd',
+',      round(sub.verbruik) as gas',
+',      initcap(to_char(sub.datumtijd,''mm-yyyy'',''nls_date_language=dutch''))',
+'||''<br>verbruik: ''||round(sub.verbruik )||'' m3''',
+'||''<br>beginstand: ''||sub.min_stand',
+'||''<br>eindstand: ''||sub.max_stand',
 'as tip',
-'from (',
-'select t.*',
-'from   month_readings t ',
-'where t.telwerk = ''GAS'' ',
-')',
-'order by dd_datumtijd',
+'from ( ',
+'  select t.*',
+'  from   month_readings t ',
+'  where  t.telwerk = ''GAS'' ',
+') sub',
+'order by 2',
 '',
 ''))
 ,p_series_type=>'bar'
@@ -10792,12 +10828,12 @@ wwv_flow_api.create_jet_chart_series(
 ,p_name=>'Gem.'
 ,p_data_source_type=>'SQL_QUERY'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select  to_char(datumtijd,''mm-yyyy'') as datumtijd',
-',     datumtijd as dd_datumtijd',
+'select to_char(datumtijd,''yyyy-mm'') as datumtijd',
+',      datumtijd                    as dd_datumtijd',
 ',      avg(verbruik) over () as gem',
-'from month_readings ',
-'where telwerk = ''GAS''',
-'order by dd_datumtijd'))
+'from   month_readings ',
+'where  telwerk = ''GAS''',
+'order  by 2'))
 ,p_series_type=>'line'
 ,p_items_value_column_name=>'GEM'
 ,p_items_label_column_name=>'DATUMTIJD'
@@ -10836,23 +10872,23 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_minor_tick_rendered=>'on'
 ,p_tick_label_rendered=>'on'
 );
-wwv_flow_api.create_page_plug(
+wwv_flow_api.create_report_region(
  p_id=>wwv_flow_api.id(41467319652387260844)
-,p_plug_name=>'Maandverbruiken'
-,p_region_template_options=>'#DEFAULT#:t-IRR-region--noBorders:t-Form--noPadding:t-Form--large:t-Form--stretchInputs:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
-,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_api.id(2988250618901442389)
-,p_plug_display_sequence=>10
+,p_name=>'Maandverbruiken'
+,p_template=>wwv_flow_api.id(2988241119766442379)
+,p_display_sequence=>10
 ,p_include_in_reg_disp_sel_yn=>'Y'
-,p_plug_grid_column_span=>3
-,p_plug_display_column=>1
-,p_plug_display_point=>'BODY'
-,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+,p_region_template_options=>'#DEFAULT#:t-Form--noPadding:t-Form--large:t-Form--stretchInputs:margin-top-none:margin-bottom-none:margin-left-none:margin-right-none'
+,p_component_template_options=>'#DEFAULT#:t-Report--stretch:t-Report--staticRowColors:t-Report--rowHighlight'
+,p_grid_column_span=>3
+,p_display_column=>1
+,p_display_point=>'BODY'
+,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT * FROM',
 '(',
 '  SELECT substr(decode(telwerk,''ET1'',''P'',''ET2'',''P'',telwerk),1,1) as medium',
 '  ,      datumtijd',
-'  ,      verbruik',
+'  ,      round(verbruik) as verbruik',
 '  FROM   month_readings',
 ')',
 'PIVOT ',
@@ -10861,95 +10897,60 @@ wwv_flow_api.create_page_plug(
 '  FOR  medium in (''E'',''G'',''P'')',
 '  )',
 'ORDER BY 1'))
-,p_plug_source_type=>'NATIVE_IR'
-,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
-,p_prn_content_disposition=>'ATTACHMENT'
-,p_prn_document_header=>'APEX'
-,p_prn_units=>'INCHES'
-,p_prn_paper_size=>'LETTER'
-,p_prn_width=>8.5
-,p_prn_height=>11
-,p_prn_orientation=>'HORIZONTAL'
-,p_prn_page_header_font_color=>'#000000'
-,p_prn_page_header_font_family=>'Helvetica'
-,p_prn_page_header_font_weight=>'normal'
-,p_prn_page_header_font_size=>'12'
-,p_prn_page_footer_font_color=>'#000000'
-,p_prn_page_footer_font_family=>'Helvetica'
-,p_prn_page_footer_font_weight=>'normal'
-,p_prn_page_footer_font_size=>'12'
-,p_prn_header_bg_color=>'#9bafde'
-,p_prn_header_font_color=>'#000000'
-,p_prn_header_font_family=>'Helvetica'
-,p_prn_header_font_weight=>'normal'
-,p_prn_header_font_size=>'10'
-,p_prn_body_bg_color=>'#efefef'
-,p_prn_body_font_color=>'#000000'
-,p_prn_body_font_family=>'Helvetica'
-,p_prn_body_font_weight=>'normal'
-,p_prn_body_font_size=>'10'
-,p_prn_border_width=>.5
-,p_prn_page_header_alignment=>'CENTER'
-,p_prn_page_footer_alignment=>'CENTER'
+,p_source_type=>'NATIVE_SQL_REPORT'
+,p_ajax_enabled=>'Y'
+,p_query_row_template=>wwv_flow_api.id(2988261104302442399)
+,p_query_num_rows=>15
+,p_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_query_show_nulls_as=>'-'
+,p_csv_output=>'N'
+,p_prn_output=>'N'
+,p_sort_null=>'L'
+,p_plug_query_strip_html=>'N'
 );
-wwv_flow_api.create_worksheet(
- p_id=>wwv_flow_api.id(41467320246187260850)
-,p_show_search_bar=>'N'
-,p_fixed_header=>'NONE'
-,p_show_detail_link=>'N'
-,p_owner=>'VANMEERENDONK@GMAIL.COM'
-,p_internal_uid=>41467320246187260850
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(25023454842830850001)
+,p_query_column_id=>1
+,p_column_alias=>'DATUMTIJD'
+,p_column_display_sequence=>1
+,p_column_heading=>'Maand Jaar'
+,p_use_as_row_header=>'N'
+,p_column_format=>'mm-yyyy'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
 );
-wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(7431437856120387802)
-,p_db_column_name=>'DATUMTIJD'
-,p_display_order=>20
-,p_column_identifier=>'B'
-,p_column_label=>'Datumtijd'
-,p_column_type=>'DATE'
-,p_heading_alignment=>'LEFT'
-,p_column_alignment=>'CENTER'
-,p_format_mask=>'mm yyyy'
-,p_tz_dependent=>'N'
-);
-wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(4010862334769621409)
-,p_db_column_name=>'''E'''
-,p_display_order=>30
-,p_column_identifier=>'G'
-,p_column_label=>'Elec'
-,p_column_type=>'NUMBER'
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(25023454910296850002)
+,p_query_column_id=>2
+,p_column_alias=>'''E'''
+,p_column_display_sequence=>2
+,p_column_heading=>'Elek (kWh)'
+,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
 );
-wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(7431440749765387831)
-,p_db_column_name=>'''P'''
-,p_display_order=>40
-,p_column_identifier=>'I'
-,p_column_label=>'Prod.'
-,p_column_type=>'NUMBER'
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(25023455003343850003)
+,p_query_column_id=>3
+,p_column_alias=>'''G'''
+,p_column_display_sequence=>4
+,p_column_heading=>'Gas (m3)'
+,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
 );
-wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(4010862460890621410)
-,p_db_column_name=>'''G'''
-,p_display_order=>50
-,p_column_identifier=>'H'
-,p_column_label=>'Gas'
-,p_column_type=>'NUMBER'
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(25023455152115850004)
+,p_query_column_id=>4
+,p_column_alias=>'''P'''
+,p_column_display_sequence=>3
+,p_column_heading=>'Prod (kWh)'
+,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
-);
-wwv_flow_api.create_worksheet_rpt(
- p_id=>wwv_flow_api.id(7431528438361398368)
-,p_application_user=>'APXWS_DEFAULT'
-,p_report_seq=>10
-,p_report_alias=>'74315285'
-,p_status=>'PUBLIC'
-,p_is_default=>'Y'
-,p_display_rows=>50
-,p_report_columns=>'DATUMTIJD:''E'':''G'':''P'''
-,p_sum_columns_on_break=>'''E'':''G'''
-,p_flashback_enabled=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(7431438325588387807)
@@ -10966,15 +10967,25 @@ wwv_flow_api.create_page_plug(
 'SELECT * ',
 'FROM',
 '(',
-'  select substr(telwerk,1,1) as medium',
-'  ,      round(12*sum(decode( telwerk,''ET1'',-1,''ET2'',-1,+1) * verbruik)/ count(distinct datumtijd)) as verbruik',
+'  select case telwerk ',
+'         when ''GAS'' then ''G''',
+'         when ''ET1'' then ''P''',
+'         when ''ET2'' then ''P''',
+'         else ''E''',
+'         end  as medium',
+'  ,      round(12*sum(verbruik)/ count(distinct datumtijd)) as verbruik',
 '  from month_readings',
-'  group by substr(telwerk,1,1)',
+'  group by  case telwerk ',
+'         when ''GAS'' then ''G''',
+'         when ''ET1'' then ''P''',
+'         when ''ET2'' then ''P''',
+'         else ''E''',
+'         end ',
 ')',
 'PIVOT ',
 '(',
 '  sum(verbruik)',
-'  FOR  medium in (''E'',''G'')',
+'  FOR  medium in (''E'',''P'',''G'')',
 '  )',
 'ORDER BY 1'))
 ,p_plug_source_type=>'NATIVE_IR'
@@ -11021,17 +11032,27 @@ wwv_flow_api.create_worksheet_column(
 ,p_db_column_name=>'''E'''
 ,p_display_order=>10
 ,p_column_identifier=>'A'
-,p_column_label=>'SJVK Elek'
+,p_column_label=>'Jaarverbruik Elek'
 ,p_column_html_expression=>'#''E''# kWh'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'LEFT'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(25023455253008850005)
+,p_db_column_name=>'''P'''
+,p_display_order=>20
+,p_column_identifier=>'C'
+,p_column_label=>'Jaarproductie Elek'
+,p_column_html_expression=>'#''P''# kWh'
 ,p_column_type=>'NUMBER'
 ,p_heading_alignment=>'LEFT'
 );
 wwv_flow_api.create_worksheet_column(
  p_id=>wwv_flow_api.id(7431438626028387810)
 ,p_db_column_name=>'''G'''
-,p_display_order=>20
+,p_display_order=>30
 ,p_column_identifier=>'B'
-,p_column_label=>'SJVK Gas'
+,p_column_label=>'Jaarverbruik Gas'
 ,p_column_html_expression=>'#''G''# m<sup>3</sup>'
 ,p_column_type=>'NUMBER'
 ,p_heading_alignment=>'LEFT'
@@ -11044,7 +11065,7 @@ wwv_flow_api.create_worksheet_rpt(
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
 ,p_display_rows=>50
-,p_report_columns=>'''E'':''G'''
+,p_report_columns=>'''E'':''P'':''G'':'
 ,p_flashback_enabled=>'N'
 );
 wwv_flow_api.create_page_button(
@@ -11075,7 +11096,7 @@ wwv_flow_api.create_page_da_action(
 ,p_event_id=>wwv_flow_api.id(7431052564947310563)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
+,p_execute_on_page_init=>'Y'
 ,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'declare',
@@ -11144,6 +11165,765 @@ wwv_flow_api.create_page_process(
 'into :g_tot',
 'from readings;',
 'end;'))
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+end;
+/
+prompt --application/pages/page_00005
+begin
+wwv_flow_api.create_page(
+ p_id=>5
+,p_user_interface_id=>wwv_flow_api.id(2988284732255442428)
+,p_name=>'Gasloos'
+,p_page_mode=>'NORMAL'
+,p_step_title=>'Gasloos'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_first_item=>'NO_FIRST_ITEM'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_dialog_chained=>'Y'
+,p_overwrite_navigation_list=>'N'
+,p_page_is_public_y_n=>'N'
+,p_cache_mode=>'NOCACHE'
+,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20180215205810'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(43675993955062051327)
+,p_plug_name=>'Jaarverbruiken'
+,p_region_template_options=>'#DEFAULT#:t-ContentBlock--h1:t-Form--noPadding:t-Form--leftLabels:margin-top-none:margin-bottom-sm:margin-left-sm:margin-right-sm'
+,p_plug_template=>wwv_flow_api.id(2988248013694442386)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY_1'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(43675995312160051341)
+,p_plug_name=>'Tarieven'
+,p_parent_plug_id=>wwv_flow_api.id(43675993955062051327)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(2988251126523442389)
+,p_plug_display_sequence=>30
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_display_point=>'BODY'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(43675995459525051342)
+,p_plug_name=>'Op basis van maandgegevens'
+,p_parent_plug_id=>wwv_flow_api.id(43675993955062051327)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(2988251126523442389)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_display_point=>'BODY'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(43675995881698051346)
+,p_plug_name=>'Verbruik in Euro''s '
+,p_parent_plug_id=>wwv_flow_api.id(43675993955062051327)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(2988251126523442389)
+,p_plug_display_sequence=>20
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_new_grid_row=>false
+,p_plug_display_point=>'BODY'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(43675995035109051338)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_api.id(43675995312160051341)
+,p_button_name=>'BUT_RECALC'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--tiny:t-Button--iconRight:t-Button--gapLeft'
+,p_button_template_id=>wwv_flow_api.id(2988274075377442414)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Herbereken '
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_warn_on_unsaved_changes=>null
+,p_icon_css_classes=>'fa-repeat'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994084422051328)
+,p_name=>'P5_E1'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_api.id(43675995459525051342)
+,p_prompt=>'E1'
+,p_post_element_text=>'kWh'
+,p_format_mask=>'99990'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>5
+,p_cMaxlength=>5
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_read_only_when_type=>'ALWAYS'
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994106010051329)
+,p_name=>'P5_E2_TARIEF'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_api.id(43675995312160051341)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'EL2 Tarief'
+,p_format_mask=>'90D00'
+,p_source=>'0'
+,p_source_type=>'STATIC'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>4
+,p_colspan=>2
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994285023051330)
+,p_name=>'P5_E2'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_api.id(43675995459525051342)
+,p_prompt=>'EL2'
+,p_post_element_text=>'kWh'
+,p_format_mask=>'99990'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>5
+,p_cMaxlength=>5
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_read_only_when_type=>'ALWAYS'
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994308142051331)
+,p_name=>'P5_ET2_TARIEF'
+,p_item_sequence=>100
+,p_item_plug_id=>wwv_flow_api.id(43675995312160051341)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'ELT2 Tarief'
+,p_format_mask=>'90D00'
+,p_source=>'0'
+,p_source_type=>'STATIC'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>4
+,p_colspan=>2
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994426405051332)
+,p_name=>'P5_GAS_TARIEF'
+,p_item_sequence=>120
+,p_item_plug_id=>wwv_flow_api.id(43675995312160051341)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'Gas Tarief'
+,p_format_mask=>'90D00'
+,p_source=>'0'
+,p_source_type=>'STATIC'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>4
+,p_colspan=>2
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994575604051333)
+,p_name=>'P5_E1_TARIEF'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_api.id(43675995312160051341)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'EL1 Tarief'
+,p_source=>'0'
+,p_source_type=>'STATIC'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>4
+,p_colspan=>2
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994680364051334)
+,p_name=>'P5_GAS'
+,p_item_sequence=>110
+,p_item_plug_id=>wwv_flow_api.id(43675995459525051342)
+,p_prompt=>'Gas'
+,p_post_element_text=>' m3'
+,p_format_mask=>'99990'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>5
+,p_cMaxlength=>5
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_read_only_when_type=>'ALWAYS'
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994755988051335)
+,p_name=>'P5_ET2'
+,p_item_sequence=>90
+,p_item_plug_id=>wwv_flow_api.id(43675995459525051342)
+,p_prompt=>'ETL2'
+,p_post_element_text=>' kWh'
+,p_format_mask=>'99990'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>5
+,p_cMaxlength=>5
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_read_only_when_type=>'ALWAYS'
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994842669051336)
+,p_name=>'P5_ET1_TARIEF'
+,p_item_sequence=>80
+,p_item_plug_id=>wwv_flow_api.id(43675995312160051341)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'ETL1 Tarief'
+,p_format_mask=>'90D00'
+,p_source=>'0'
+,p_source_type=>'STATIC'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>4
+,p_colspan=>2
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675994988694051337)
+,p_name=>'P5_ET1'
+,p_item_sequence=>70
+,p_item_plug_id=>wwv_flow_api.id(43675995459525051342)
+,p_prompt=>'ETL1'
+,p_post_element_text=>'kWh'
+,p_format_mask=>'99990'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>5
+,p_cMaxlength=>5
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_read_only_when_type=>'ALWAYS'
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675995661319051344)
+,p_name=>'P5_E_TOTAAL'
+,p_item_sequence=>130
+,p_item_plug_id=>wwv_flow_api.id(43675995459525051342)
+,p_prompt=>'E totaal'
+,p_post_element_text=>'kWh'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>5
+,p_cMaxlength=>5
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_read_only_when_type=>'ALWAYS'
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675995799992051345)
+,p_name=>'P5_GAS_KWH'
+,p_item_sequence=>120
+,p_item_plug_id=>wwv_flow_api.id(43675995459525051342)
+,p_post_element_text=>'kWh'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>5
+,p_cMaxlength=>5
+,p_begin_on_new_line=>'N'
+,p_colspan=>3
+,p_grid_label_column_span=>0
+,p_read_only_when_type=>'ALWAYS'
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_03=>'right'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675995992717051347)
+,p_name=>'P5_E1_EUR'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_api.id(43675995881698051346)
+,p_prompt=>'E1 '
+,p_post_element_text=>'EUR'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'VALUE'
+,p_attribute_04=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675996053741051348)
+,p_name=>'P5_E2_EUR'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_api.id(43675995881698051346)
+,p_prompt=>'E2'
+,p_post_element_text=>'EUR'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'VALUE'
+,p_attribute_04=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675996146542051349)
+,p_name=>'P5_ET1_EUR'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_api.id(43675995881698051346)
+,p_prompt=>'ET1 '
+,p_post_element_text=>'EUR'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'VALUE'
+,p_attribute_04=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(43675996256232051350)
+,p_name=>'P5_ET2_EUR'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_api.id(43675995881698051346)
+,p_prompt=>'ET2'
+,p_post_element_text=>'EUR'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'VALUE'
+,p_attribute_04=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(50099033853466480901)
+,p_name=>'P5_GAS_EUR'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_api.id(43675995881698051346)
+,p_prompt=>'GAS'
+,p_post_element_text=>'EUR'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'VALUE'
+,p_attribute_04=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(50099033922581480902)
+,p_name=>'P5_GAS_KWH_EUR'
+,p_item_sequence=>55
+,p_item_plug_id=>wwv_flow_api.id(43675995881698051346)
+,p_prompt=>'GAS (kWH)'
+,p_post_element_text=>'leveringskosten en vastrecht niet meegenomen. Die zitten al in het E-deel)'
+,p_format_mask=>'999G999'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_begin_on_new_line=>'N'
+,p_grid_label_column_span=>2
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'VALUE'
+,p_attribute_04=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(50099034016153480903)
+,p_name=>'P5_E_TOTAAL_EUR'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_api.id(43675995881698051346)
+,p_prompt=>'E totaal'
+,p_post_element_text=>'EUR'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_colspan=>3
+,p_grid_label_column_span=>1
+,p_field_template=>wwv_flow_api.id(2988273476784442412)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'VALUE'
+,p_attribute_04=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(43675995118965051339)
+,p_name=>'Recalculate'
+,p_event_sequence=>10
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(43675995035109051338)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(43675995275762051340)
+,p_event_id=>wwv_flow_api.id(43675995118965051339)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'declare',
+'  cursor c_i',
+'  is',
+'    select telwerk, round(sum(vbk)) as waarde',
+'    from (',
+'      select telwerk, to_number(to_char(datumtijd,''mm'')) , avg(verbruik) vbk',
+'      from month_readings',
+'      group by telwerk, to_number(to_char(datumtijd,''mm''))',
+'    )',
+'    group by telwerk',
+'  ;',
+'begin',
+'  for r_i in c_i ',
+'  loop',
+'    if r_i.telwerk = ''E1''',
+'    then',
+'      :p5_e1 := r_i.waarde;',
+'    elsif r_i.telwerk = ''E2''',
+'    then',
+'      :p5_e2 := r_i.waarde;    ',
+'    elsif r_i.telwerk = ''ET1''',
+'    then',
+'      :p5_et1 := r_i.waarde;',
+'    elsif r_i.telwerk = ''ET2''',
+'    then',
+'      :p5_et2 := r_i.waarde;          ',
+'    elsif r_i.telwerk = ''GAS''',
+'    then',
+'      :p5_gas := r_i.waarde;                ',
+'    end if;',
+'  end loop;',
+'  :p5_e_totaal := :p5_e1 + :p5_e2 - :p5_et1 - :p5_et2 ;',
+'  :p5_gas_kwh   :=round( 9.769 * :p5_gas);',
+'   -- ',
+'  :p5_e1_tarief  := nvl(nullif(:p5_e1_tarief,0),0.1934);  --laag',
+'  :p5_e2_tarief  := nvl(nullif(:p5_e2_tarief,0),0.2176);  ',
+'  :p5_et1_tarief := nvl(nullif(:p5_et1_tarief,0),0.1934);',
+'  :p5_et2_tarief := nvl(nullif(:p5_et2_tarief,0),0.2176);  ',
+'  :p5_gas_tarief := nvl(nullif(:p5_gas_tarief,0),0.6733);    ',
+'  --',
+'  :p5_e1_eur := round(:p5_e1_tarief * :p5_e1);',
+'  :p5_e2_eur := round(:p5_e2_tarief * :p5_e2);',
+'  :p5_et1_eur := round(:p5_et1_tarief * :p5_et1);',
+'  :p5_et2_eur := round(:p5_et2_tarief * :p5_et2);  ',
+'  :p5_gas_eur := :p5_gas_tarief * :p5_gas -- per m3',
+'              + 0.1302 * 365 -- leveringskosten',
+'              + 0.4617 * 365 -- netwerk',
+'  ; ',
+'  :p5_e_totaal_eur := round(:p5_e1_eur + :p5_e2_eur - :p5_et1_eur - :p5_et2_eur );',
+'  -- ',
+'   :p5_gas_kwh_eur := :p5_gas_kwh * (0.0620 + 0.0420)/ 2   -- levering',
+'                   +  :p5_gas_kwh * 0.1046 -- belasting',
+'                   +  :p5_gas_kwh * 0.0132 -- ODE heffing',
+'                   +   :p5_gas_kwh * 0.0378 -- btw',
+';',
+'  :p5_gas_kwh_eur := round(:p5_gas_kwh_eur);',
+'  :p5_gas_eur := round(:p5_gas_eur);  ',
+'end;  ',
+''))
+,p_attribute_02=>'P5_E1_TARIEF,P5_E2_TARIEF,P5_ET1_TARIEF,P5_ET2_TARIEF,P5_GAS_TARIEF'
+,p_attribute_03=>'P5_E1,P5_E2,P5_ET1_EUR,P5_ET2,P5_GAS_EUR,P5_E_TOTAAL, P5_GAS_KWH,P5_E1_TARIEF,P5_E2_TARIEF,P5_ET1_TARIEF,P5_ET2_TARIEF,P5_GAS_TARIEF,P5_E1_EUR,P5_E2_EUR,P5_ET2_EUR,P5_GAS_KWH_EUR,P5_E_TOTAAL_EUR'
+,p_attribute_04=>'N'
+,p_stop_execution_on_error=>'Y'
+,p_wait_for_result=>'Y'
+);
+end;
+/
+prompt --application/pages/page_00008
+begin
+wwv_flow_api.create_page(
+ p_id=>8
+,p_user_interface_id=>wwv_flow_api.id(2988284732255442428)
+,p_name=>'APXPrijzen'
+,p_page_mode=>'NORMAL'
+,p_step_title=>'APXPrijzen'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_first_item=>'NO_FIRST_ITEM'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_dialog_chained=>'Y'
+,p_overwrite_navigation_list=>'N'
+,p_page_is_public_y_n=>'N'
+,p_cache_mode=>'NOCACHE'
+,p_last_updated_by=>'VANMEERENDONK@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20180119215945'
+);
+wwv_flow_api.create_report_region(
+ p_id=>wwv_flow_api.id(42234073672146208154)
+,p_name=>'APX Prijzen'
+,p_template=>wwv_flow_api.id(2988251126523442389)
+,p_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:t-Region--noBorder:t-Region--scrollBody'
+,p_component_template_options=>'#DEFAULT#:t-Report--altRowsDefault:t-Report--rowHighlight'
+,p_new_grid_row=>false
+,p_display_point=>'BODY'
+,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select t.datum',
+',      t.net_volume',
+',      t.volume_unit',
+',      t.price',
+',      t.price_unit',
+'from   table(sma_apx.geef_prijzen) t'))
+,p_source_type=>'NATIVE_SQL_REPORT'
+,p_ajax_enabled=>'Y'
+,p_query_row_template=>wwv_flow_api.id(2988261104302442399)
+,p_query_num_rows=>25
+,p_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_query_no_data_found=>'No data found.'
+,p_query_row_count_max=>500
+,p_csv_output=>'N'
+,p_prn_output=>'N'
+,p_sort_null=>'L'
+,p_plug_query_strip_html=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(7431441634269387840)
+,p_query_column_id=>1
+,p_column_alias=>'DATUM'
+,p_column_display_sequence=>1
+,p_column_heading=>'Datum'
+,p_use_as_row_header=>'N'
+,p_column_format=>'dd-mm-yyyy hh24:mi:ss'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(43675992402918051312)
+,p_query_column_id=>2
+,p_column_alias=>'NET_VOLUME'
+,p_column_display_sequence=>2
+,p_column_heading=>'Volume'
+,p_use_as_row_header=>'N'
+,p_column_format=>'999999D00'
+,p_column_alignment=>'RIGHT'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(43675992744651051315)
+,p_query_column_id=>3
+,p_column_alias=>'VOLUME_UNIT'
+,p_column_display_sequence=>3
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(43675992524678051313)
+,p_query_column_id=>4
+,p_column_alias=>'PRICE'
+,p_column_display_sequence=>4
+,p_column_heading=>'Prijs'
+,p_use_as_row_header=>'N'
+,p_column_format=>'999999D00'
+,p_column_alignment=>'RIGHT'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(43675992679736051314)
+,p_query_column_id=>5
+,p_column_alias=>'PRICE_UNIT'
+,p_column_display_sequence=>5
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(43675993229652051320)
+,p_plug_name=>'APX'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_api.id(2988251126523442389)
+,p_plug_display_sequence=>20
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_new_grid_row=>false
+,p_plug_display_column=>4
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(43675993310957051321)
+,p_region_id=>wwv_flow_api.id(43675993229652051320)
+,p_chart_type=>'combo'
+,p_animation_on_display=>'none'
+,p_animation_on_data_change=>'none'
+,p_orientation=>'vertical'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
+,p_hide_and_show_behavior=>'none'
+,p_hover_behavior=>'none'
+,p_stack=>'off'
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_show_label=>true
+,p_legend_rendered=>'on'
+,p_legend_position=>'auto'
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(43675993476436051322)
+,p_chart_id=>wwv_flow_api.id(43675993310957051321)
+,p_seq=>10
+,p_name=>'Volume'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select t.datum',
+',      t.net_volume',
+'from   table(sma_apx.geef_prijzen) t'))
+,p_series_type=>'bar'
+,p_items_value_column_name=>'NET_VOLUME'
+,p_items_label_column_name=>'DATUM'
+,p_color=>'#007AFF'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(43675993808299051326)
+,p_chart_id=>wwv_flow_api.id(43675993310957051321)
+,p_seq=>20
+,p_name=>'Prijs'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select t.datum',
+',      t.price',
+'from   table(sma_apx.geef_prijzen) t'))
+,p_series_type=>'line'
+,p_items_value_column_name=>'PRICE'
+,p_items_label_column_name=>'DATUM'
+,p_color=>'#FF3B30'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'on'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(43675993505368051323)
+,p_chart_id=>wwv_flow_api.id(43675993310957051321)
+,p_axis=>'x'
+,p_is_rendered=>'off'
+,p_format_scaling=>'none'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(43675993676959051324)
+,p_chart_id=>wwv_flow_api.id(43675993310957051321)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_format_type=>'decimal'
+,p_decimal_places=>2
+,p_numeric_pattern=>'#####.##'
+,p_format_scaling=>'none'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(43675993769791051325)
+,p_chart_id=>wwv_flow_api.id(43675993310957051321)
+,p_axis=>'y2'
+,p_is_rendered=>'on'
+,p_min=>0
+,p_max=>60
+,p_format_type=>'currency'
+,p_decimal_places=>2
+,p_currency=>'EUR'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_split_dual_y=>'auto'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(42234072173329208150)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(42234073672146208154)
+,p_button_name=>'Haal_op'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(2988273934529442414)
+,p_button_image_alt=>'Haal op'
+,p_button_position=>'REGION_TEMPLATE_COPY'
+);
+wwv_flow_api.create_page_branch(
+ p_id=>wwv_flow_api.id(42234072565327208151)
+,p_branch_action=>'f?p=&APP_ID.:8:&SESSION.&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_sequence=>1
+);
+wwv_flow_api.create_page_process(
+ p_id=>wwv_flow_api.id(42234072944144208151)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_WEB_SERVICE'
+,p_process_name=>'Web Service Request'
+,p_process_sql_clob=>'42096096656236918918:42096096841838918919'
+,p_attribute_01=>wwv_flow_api.id(42096096841838918919)
+,p_attribute_02=>'COLLECTION'
+,p_attribute_03=>'P8_DOREST_RESULTS'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
 end;
@@ -11309,6 +12089,52 @@ wwv_flow_api.create_page_process(
 ,p_process_name=>'Get Username Cookie'
 ,p_process_sql_clob=>':P101_USERNAME := apex_authentication.get_login_username_cookie;'
 );
+end;
+/
+prompt --application/shared_components/logic/webservices/apxprijzen
+begin
+wwv_flow_api.create_web_service(
+ p_id=>wwv_flow_api.id(42096096656236918918)
+,p_name=>'APXPrijzen'
+,p_url=>'https://www.apxgroup.com/rest-api/quotes/APX%20Power%20NL%20Hourly?time=last&limit=1'
+,p_action=>'REST'
+,p_static_parm_04=>'GET'
+,p_static_parm_05=>'json'
+,p_static_parm_10=>'nvp'
+);
+wwv_flow_api.create_ws_operations(
+ p_id=>wwv_flow_api.id(42096096841838918919)
+,p_ws_id=>wwv_flow_api.id(42096096656236918918)
+,p_name=>'doREST'
+);
+wwv_flow_api.create_ws_parameters(
+ p_id=>wwv_flow_api.id(42096097177013918922)
+,p_ws_opers_id=>wwv_flow_api.id(42096096841838918919)
+,p_name=>'json'
+,p_input_or_output=>'O'
+,p_parm_type=>'json'
+,p_type_is_xsd=>'N'
+);
+end;
+/
+prompt --application/deployment/definition
+begin
+null;
+end;
+/
+prompt --application/deployment/install
+begin
+null;
+end;
+/
+prompt --application/deployment/checks
+begin
+null;
+end;
+/
+prompt --application/deployment/buildoptions
+begin
+null;
 end;
 /
 prompt --application/end_environment
